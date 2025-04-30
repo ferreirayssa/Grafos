@@ -1,6 +1,6 @@
 # 🧭 Roteador de Capitais Brasileiras
 
-Este projeto Java calcula a **menor rota entre duas capitais do Brasil**, considerando a distância em linha reta entre elas. O sistema usa:
+Este projeto Java calcula a **menor rota entre duas capitais do Brasil**, considerando a distância em linha reta entre elas. O sistema utiliza:
 
 - ✅ Interface gráfica com Swing
 - 🧭 Algoritmo de Dijkstra para encontrar o menor caminho
@@ -38,10 +38,11 @@ Usada para calcular a **distância geográfica** (em linha reta) entre dois pont
 a = sin²(Δlat / 2) + cos(lat1) × cos(lat2) × sin²(Δlon / 2)
 c = 2 × atan2(√a, √(1−a))
 d = R × c
+```
 
-R: raio da Terra ≈ 6371 km
-lat, lon: coordenadas em graus (convertidas para radianos)
-d: distância entre os pontos
+- **R**: raio da Terra ≈ 6371 km
+- **lat, lon**: coordenadas em graus (convertidas para radianos)
+- **d**: distância entre os pontos
 
 ---
 
@@ -56,6 +57,7 @@ d: distância entre os pontos
 
 ### 📂 Estrutura do Projeto
 
+```
 Projeto/
 ├── MainSwing.java         # Interface gráfica com JComboBox
 ├── Grafo.java             # Estrutura do grafo (cidades e distâncias)
@@ -63,13 +65,14 @@ Projeto/
 ├── Coordenadas.java       # Latitude/longitude reais das capitais
 ├── GeoUtils.java          # Implementação da fórmula de Haversine
 ├── Dijkstra.java          # Algoritmo de menor caminho
+```
 
 ---
 
 ### 📌 Exemplo de Uso
 
-- O usuário abre o programa.
-- Seleciona "São Paulo (SP)" como origem.
-- Seleciona "Belém (PA)" como destino.
-- Clica em "Calcular rota".
-- O sistema exibe o melhor caminho e a distância estimada em quilômetros.
+1. O usuário abre o programa.
+2. Seleciona "São Paulo (SP)" como origem.
+3. Seleciona "Belém (PA)" como destino.
+4. Clica em "Calcular rota".
+5. O sistema exibe o melhor caminho e a distância estimada em quilômetros.
