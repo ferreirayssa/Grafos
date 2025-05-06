@@ -1,3 +1,4 @@
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 
@@ -14,19 +15,35 @@ public class MainSwing {
 
         JFrame frame = new JFrame("Menor rota entre capitais (Dijkstra)");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 350);
+        frame.setSize(700, 450);
         frame.setLayout(new GridLayout(6, 1));
         frame.setLocationRelativeTo(null);
 
+        // Fontes
+        Font fonteNegrito = new Font("SansSerif", Font.BOLD, 18);
+        Font fonteNormal = new Font("SansSerif", Font.PLAIN, 18);
+
+        // Componentes
         JLabel label1 = new JLabel("Origem:");
+        label1.setFont(fonteNegrito);
+
         JComboBox<String> origemBox = new JComboBox<>(grafo.getCapitaisOrdenadas());
+        origemBox.setFont(fonteNormal);
 
         JLabel label2 = new JLabel("Destino:");
+        label2.setFont(fonteNegrito);
+
         JComboBox<String> destinoBox = new JComboBox<>(grafo.getCapitaisOrdenadas());
+        destinoBox.setFont(fonteNormal);
 
         JButton calcularButton = new JButton("Calcular rota");
+        calcularButton.setFont(fonteNegrito);
+
         JTextArea resultadoArea = new JTextArea();
+        resultadoArea.setFont(fonteNormal);
         resultadoArea.setEditable(false);
+        resultadoArea.setLineWrap(true);
+        resultadoArea.setWrapStyleWord(true);
 
         calcularButton.addActionListener((ActionEvent e) -> {
             String origem = (String) origemBox.getSelectedItem();
@@ -38,8 +55,14 @@ public class MainSwing {
                 destino
             );
 
-            resultadoArea.setText("Caminho: " + String.join(" → ", resultado.getCaminho()) +
-                                  "\nDistância total: " + resultado.getDistanciaTotal() + " km");
+            if (resultado.getDistanciaTotal() == Integer.MAX_VALUE) {
+                resultadoArea.setText("Não há rota possível entre as capitais selecionadas.");
+            } else {
+                resultadoArea.setText(
+                    "Caminho: " + String.join(" → ", resultado.getCaminho()) + "\n" +
+                    "Distância total: " + resultado.getDistanciaTotal() + " km"
+                );
+            }
         });
 
         frame.add(label1);

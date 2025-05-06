@@ -19,6 +19,6 @@ public class Grafo {
     public String[] getCapitaisOrdenadas() {
         List<String> nomes = new ArrayList<>(conexoes.keySet());
         nomes.sort(Comparator.naturalOrder());
-        return nomes.toArray(new String[0]);
+        return nomes.toArray(String[]::new);
     }
 }
